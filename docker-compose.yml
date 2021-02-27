@@ -14,7 +14,6 @@ services:
     build:
       context: .
     image: ansible
-    command: tail -f /dev/null
     volumes:
     - ./ansible_practice:/ansible_practice
     networks:
