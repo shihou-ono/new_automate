@@ -1,0 +1,29 @@
+version: '3'
+services:
+  vyos01:
+    image: higebu/vyos:latest
+    command: /sbin/init
+    volumes:
+    - /lib/modules:/lib/modules
+    privileged: true
+    networks:
+      network_automation:
+        ipv4_address: 10.0.0.3
+
+  ansible:
+    build:
+      context: .
+    image: ansible
+    volumes:
+    - ./ansible_practice:/ansible_practice
+    networks:
+      network_automation:
+        ipv4_address: 10.0.0.2
+
+networks:
+  network_automation:
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.0.0.0/24
+
