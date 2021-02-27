@@ -10,6 +10,17 @@ services:
       network_automation:
         ipv4_address: 10.0.0.3
 
+  ansible:
+    build:
+      context: .
+    image: ansible
+    command: tail -f /dev/null
+    volumes:
+    - ./ansible_practice:/ansible_practice
+    networks:
+      network_automation:
+        ipv4_address: 10.0.0.2
+
 networks:
   network_automation:
     ipam:
