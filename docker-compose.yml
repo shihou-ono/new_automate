@@ -1,4 +1,14 @@
 version: '3'
+services:
+  vyos01:
+    image: higebu/vyos:latest
+    command: /sbin/init
+    volumes:
+    - /lib/modules:/lib/modules
+    privileged: true
+    networks:
+      network_automation:
+        ipv4_address: 10.0.0.3
 
 networks:
   network_automation:
